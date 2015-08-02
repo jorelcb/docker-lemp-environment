@@ -1,0 +1,15 @@
+[submodule "docker-nginx"]
+	path = docker-nginx
+	url = git@github.com:jorelcb/docker-nginx.git
+[submodule "docker-phpcli"]
+	path = docker-phpcli
+	url = git@github.com:jorelcb/docker-phpcli.git
+[submodule "docker-app-data"]
+	path = docker-app-data
+	url = git@github.com:jorelcb/docker-app-data.git
+[submodule "docker-phpfpm"]
+	path = docker-phpfpm
+	url = git@github.com:jorelcb/docker-phpfpm.git
+[submodule "docker-mysql"]
+	path = docker-mysql
+	url = git@github.com:jorelcb/docker-mysql.git
