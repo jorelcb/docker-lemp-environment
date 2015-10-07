@@ -17,9 +17,9 @@ phpfpm:
     build: ./docker-phpfpm/
     volumes_from:
       - appdata
-      - redis
     links:
       - mysql
+      - redis
     privileged: true
 nginx:
     build: ./docker-nginx/
