@@ -1,34 +1,33 @@
-app-data:  
-    container_name: app-data
+appdata:  
     build: ./docker-app-data/
     volumes: 
-     - /srv/www:/srv/www:rw
+     - ~/workspace:/srv/www:rw
+     - ~/.docker/data/redis:/srv/redis:rw
+     - ~/.docker/data/db:/var/lib/mysql:rw
+redis:
+    image: redis
 mysql:
-    container_name: mysql
     build: ./docker-mysql/
     environment:
       - MYSQL_DATABASE=myappdb
       - MYSQL_ROOT_PASSWORD=1234
     volumes_from:
-      - app-data
+      - appdata
 phpfpm:
-    container_name: phpfpm
     build: ./docker-phpfpm/
     volumes_from:
-      - app-data
+      - appdata
+      - redis
     links:
-      - mysql:mysql
+      - mysql
     privileged: true
 nginx:
-    container_name: nginx
     build: ./docker-nginx/
     volumes_from:
-      - app-data
+      - appdata
     links:
-      - phpfpm:fpm
+      - phpfpm
     ports:
-      - 80:80
+      - 8000:80
     privileged: true
-
-
 
