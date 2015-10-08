@@ -2,7 +2,18 @@
 
 ### Docker Containers for a complete Lemp Environment
 
+>Using Docker Compose:
+
+    docker-compose up
+
 >As Super User do.
+
+    docker run --name app-data -v /home/jorel/Workspace:/srv/www:rw -v /home/jorel/dbdata:/srv/dbdata:rw jorelcb/app-data && \
+    docker run --name mysql -e MYSQL_DATABASE=pasajesterrestres -e MYSQL_ROOT_PASSWORD=root --volumes-from app-data -d jorelcb/mysql && \
+    docker run --privileged=true --name phpfpm --volumes-from app-data --link mysql:mysql -d jorelcb/phpfpm && \
+    docker run --privileged=true --name nginx --volumes-from app-data -p 80:80 --link phpfpm:fpm -d jorelcb/nginx
+
+>With dns:
 
     docker run --name app-data --dns 172.17.42.1 -v /home/jorel/Workspace:/srv/www:rw -v /home/jorel/dbdata:/srv/dbdata:rw jorelcb/app-data && \
     docker run --name mysql --dns 172.17.42.1 -e MYSQL_DATABASE=pasajesterrestres -e MYSQL_ROOT_PASSWORD=root --volumes-from app-data -d jorelcb/mysql && \
