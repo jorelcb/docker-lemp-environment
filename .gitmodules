@@ -1,15 +1,15 @@
 [submodule "docker-nginx"]
 	path = docker-nginx
-	url = https://github.com/jorelcb/docker-nginx.git
+	url = git@github.com:jorelcb/docker-nginx.git
 [submodule "docker-phpcli"]
 	path = docker-phpcli
-	url = https://github.com/jorelcb/docker-phpcli.git
+	url = git@github.com:jorelcb/docker-phpcli.git
 [submodule "docker-app-data"]
 	path = docker-app-data
-	url = https://github.com/jorelcb/docker-app-data.git
+	url = git@github.com:jorelcb/docker-app-data.git
 [submodule "docker-phpfpm"]
 	path = docker-phpfpm
-	url = https://github.com/jorelcb/docker-phpfpm.git
+	url = git@github.com:jorelcb/docker-phpfpm.git
 [submodule "docker-mysql"]
 	path = docker-mysql
-	url = https://github.com/jorelcb/docker-mysql.git
+	url = git@github.com:jorelcb/docker-mysql.git
