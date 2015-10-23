@@ -1,20 +1,20 @@
 appdata:  
-    build: ./docker-app-data/
+    image: jorelcb/app-data
     volumes: 
-     - ~/workspace:/srv/www:rw
+     - ~/.docker/data/www:/srv/www:rw
      - ~/.docker/data/redis:/srv/redis:rw
      - ~/.docker/data/db:/var/lib/mysql:rw
 redis:
     image: redis
 mysql:
-    build: ./docker-mysql/
+    image: jorelcb/mysql
     environment:
       - MYSQL_DATABASE=myappdb
       - MYSQL_ROOT_PASSWORD=1234
     volumes_from:
       - appdata
 phpfpm:
-    build: ./docker-phpfpm/
+    image: jorelcb/phpfpm
     volumes_from:
       - appdata
     links:
@@ -22,7 +22,7 @@ phpfpm:
       - redis
     privileged: true
 nginx:
-    build: ./docker-nginx/
+    image: jorelcb/nginx
     volumes_from:
       - appdata
     links:
